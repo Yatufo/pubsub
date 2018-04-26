@@ -7,6 +7,9 @@ var bodyParser = require('body-parser')
 const pubsub = new PubSub();
 const app = express()
 const defaultTopic = "projects/costco-202313/topics/testtopic";
+
+const PORT = process.env.PORT || 8080;
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
@@ -44,4 +47,4 @@ app.post('/api/push', (req, res) => {
 })
 
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
