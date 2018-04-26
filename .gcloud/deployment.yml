@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fulfillment-deployment
+  labels:
+    #Project ID
+    app: costco-202313
+spec:
+  #Run two instances of our application
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: costco-202313
+    spec:
+      #Container details
+      containers:
+        - name: pubsub
+          image: gcr.io/costco-202313/pubsub
+          imagePullPolicy: Always
+          #Ports to expose
+          ports:
+          - containerPort: 8000

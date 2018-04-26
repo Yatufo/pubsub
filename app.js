@@ -16,6 +16,11 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+app.get('/healthcheck', (req, res) => {
+  res.send({
+    status: "ok"
+  });
+})
 
 app.post('/api/messages', (req, res) => {
   pubsub.topic(defaultTopic)
